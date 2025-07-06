@@ -75,3 +75,4 @@ function processError(message, error, defaultValue){
     }
     throw(message + ' - ' + String(error))
 }
+  
