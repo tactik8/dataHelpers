@@ -42,7 +42,7 @@ npm publish
 #### add in package.json 
 ``` 
 imports: {
-    "#dataHelpers": "./utils/dataHelpers/dataHelpers.js",
+    "#dataHelpers": "./utils/dataHelpers/dataHelpers/dataHelpers.js",
 }
 ```
 
