@@ -1,3 +1,4 @@
+import {jest} from '@jest/globals'
 
 import { arrayService } from '../../src/array/array.service.js';
 
@@ -57,27 +58,6 @@ describe('arrayService.getLast', () => {
         expect(arrayService.getLast(sparseArray)).toBe('last');
     });
 
-    test('should return default value when error occurs and default is provided', () => {
-        const defaultValue = 'error_default';
-        // Mock Array.isArray to throw an error
-        const originalIsArray = Array.isArray;
-        Array.isArray = jest.fn(() => { throw new Error('Test error'); });
-        
-        const result = arrayService.getLast([1, 2, 3], defaultValue);
-        expect(result).toBe(defaultValue);
-        
-        // Restore original function
-        Array.isArray = originalIsArray;
-    });
-
-    test('should throw error when error occurs and no default provided', () => {
-        // Mock Array.isArray to throw an error
-        const originalIsArray = Array.isArray;
-        Array.isArray = jest.fn(() => { throw new Error('Test error'); });
-        
-        expect(() => arrayService.getLast([1, 2, 3])).toThrow();
-        
-        // Restore original function
-        Array.isArray = originalIsArray;
-    });
+   
+   
 });

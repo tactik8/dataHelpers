@@ -1,3 +1,5 @@
+import {jest} from '@jest/globals'
+
 
 import { arrayService } from '../../src/array/array.service.js';
 

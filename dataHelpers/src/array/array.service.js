@@ -31,8 +31,12 @@ function getFirst(value, defaultValue){
         if(isArray(value) === false){
             return processError('Invalid array', null, defaultValue)
         }
-        
-        return value?.[0] || undefined
+
+        if(value.length === 0){
+            return undefined
+        } else {
+            return value[0]
+        }
         
     } catch(error){
         return processError('getFirst', error, defaultValue)
@@ -44,8 +48,13 @@ function getLast(value, defaultValue){
         if(isArray(value) === false){
             return processError('Invalid array', null, defaultValue)
         }
-        
-        return value?.[value.length - 1] || undefined
+
+        if(value.length === 0){
+            return undefined
+        } else {
+            return value?.[value.length - 1]
+        }
+       
         
     } catch(error){
         return processError('getLast', error, defaultValue)

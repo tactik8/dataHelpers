@@ -25,23 +25,3 @@ export const dataHelpers = {
 
 
 
-
-import { arrayService } from './src/array/array.service.js';
-import { dateService } from './src/date/date.service.js';
-import { nullService } from './src/null/null.service.js';
-import { addressService } from './src/address/address.service.js';
-import { phoneService } from './src/phone/phone.service.js';
-
-export const dataHelpers = {
-    array: arrayService,
-    date: dateService,
-    null: nullService,
-    address: addressService,
-    phone: phoneService,
-    email: {
-        isValid: (email) => {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-    }
-};
