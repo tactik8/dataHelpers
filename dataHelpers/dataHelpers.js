@@ -1,9 +1,9 @@
 
 
-import { urlService} from './src/url.service.js'
-import { emailService} from './src/email.service.js'
-import { dateService} from './src/date.service.js'
-import { arrayService} from './src/date.service.js'
+import { urlService} from './src/url/url.service.js'
+import { emailService} from './src/email/email.service.js'
+import { dateService} from './src/date/date.service.js'
+import { arrayService} from './src/array/array.service.js'
 
 
 export const dataHelpers = {
