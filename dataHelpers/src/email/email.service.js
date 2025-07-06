@@ -1,92 +1,87 @@
 
 
 export const emailService = {
-
-    isValid: isEmail,
-    isEmail, isEmail,
+    isValid: isValid,
+    isEmail: isValid,
     toEmail: toEmail,
-    
-    
+    getDomain: getDomain,
+    getUsername: getUsername,
 }
 
 
-function isEmail(value) {
+function isValid(email) {
     /**
-     * Checks if a value is an email
-     * @param {*} value - The value to check
-     * @returns {Boolean} - True if the value is an email, false otherwise
+     * Checks if an email is valid
+     * @param {String} email
+     * @returns {Boolean}
+     * 
+     */
+    if (typeof email !== 'string') {
+        throw new TypeError('The provided value must be a string.');
+    }
+
+    // Regular expression to validate email addresses
+    const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/ ;
+
+    return emailRegex.test(email);
+}
+
+
+function toEmail(email, defaultValue){
+    /**
+     * Converts a string to an email address
+     */
+
+    return email
+}
+
+function getUsername(email){
+    /**
+     * Returns the username of an email address
+     * @param {String} email
+     * @returns {String} The domain
      * 
      */
 
-    //
-    let result
-    let isValid
-
-    // Input validation
-    let c1 = value !== undefined
-    let c2 = typeof value === 'string'
-
-    isValid = c1 && c2 
-    if(isValid === false){
-        return false
+    if(!isValid(email)){
+        return null
     }
 
-    // Input test
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    result = emailRegex.test(value);
-
-    // Return 
-    return result
+    return email.split('@')[0]
 
 }
 
-function toEmail(inputValue, defaultValue) {
+
+function getUsernamePattern(email){
     /**
-     * Converts a value to an email
-     * @param {*} value - The value to convert
-     * @returns {String} - The email
-     * @example toEmail('john.doe@gmail.com') // 'john.doe@gmail.com'
+     * Returns the pattern of the username of an email address
+     * todo: complete
+     */
+    if(!isValid(email)){
+        return null
+    }
+
+    let username = getUsername(email)
+
+    return 
+
+
+}
+
+
+
+function getDomain(email){
+    /**
+     * Returns the domain of an email address
+     * @param {String} email
+     * @returns {String} The domain
+     * 
      */
 
-    let result 
-    let value = inputValue
-    let isValid = true
-    let errorMessage = 'Invalid Email: '
-
-    // Input validation
-    let c1 = value !== undefined
-    let c2 = typeof value === 'string'
-
-    isValid = c1 && c2 
-
-    // Process input
-    if(isValid === true){
-        try {
-
-            value = value.trim()
-            let username = value.split('@')[0]
-            let domain = value.split('@')[1]
-            domain = domain.toLowerCase()
-            result = [username, value].join('@')
-
-        } catch (err){
-            isValid = false
-        }
+    if(!isValid(email)){
+        return null
     }
 
-    // Final validity check
-    isValid = isEmail(result)
-
-    // Return result
-    if(isValid === false){
-        if(!defaultValue){
-            throw(errorMessage + String(value))
-        }       
-        return defaultValue
-    }
-
-
-    return result
-
+    return email.split('@')[1]
 
 }
