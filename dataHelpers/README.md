@@ -1,6 +1,6 @@
-# jsonldHelpers
+# dataHelpers
 
-JS library forjsonld
+JS library data manipulation
 
 ## Location
 
